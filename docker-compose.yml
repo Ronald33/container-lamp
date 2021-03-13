@@ -1,0 +1,36 @@
+version: "2"
+services:
+    php-apache:
+        container_name: php-apache
+        build: 
+            context: .
+            dockerfile: php.Dockerfile
+        restart: always
+        ports:
+            - "80:80"
+        volumes:
+            - ./www:/var/www/html
+        links:
+            - mysql:mysql
+    mysql:
+        container_name: mysql
+        image: mysql:5.7
+        restart: always
+        ports:
+            - "3306:3306"
+        volumes:
+           - ./mysql-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 'toor'
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        links:
+            - mysql:mysql
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: root
+            PMA_PASSWORD: toor
+        ports:
+            - 81:80
