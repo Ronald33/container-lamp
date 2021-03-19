@@ -1,11 +1,16 @@
 mysql-data/
 www/
 
+# Exceptions
 # Vim.gitignore
 # NotepadPP.gitignore
 # VisualStudioCode.gitignore
 # Windows.gitignore
 # Linux.gitignore
+
+## Exceptions
+
+!www/.gitkeep
 
 ## Vim.gitignore
 
