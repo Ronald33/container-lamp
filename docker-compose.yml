@@ -7,9 +7,10 @@ services:
             dockerfile: php.Dockerfile
         restart: always
         ports:
-            - "80:80"
+            - 80:80
         volumes:
             - ./www:/var/www/html
+            - ./config.ini:/usr/local/etc/php/php.ini
         links:
             - mysql:mysql
     mysql:
@@ -17,7 +18,7 @@ services:
         image: mysql:5.7
         restart: always
         ports:
-            - "3306:3306"
+            - 3306:3306
         volumes:
            - ./mysql-data:/var/lib/mysql
         environment:
